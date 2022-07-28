@@ -1,8 +1,8 @@
-extends KinematicBody2D
+extends Area2D
 
 var is_enemy = true
 var target
-export var speed = 20
+export var speed = 100
 
 
 func _ready():
@@ -11,8 +11,8 @@ func _ready():
 func start(player):
 	target = player
 
-func _physics_process(delta):
+func _process(delta):
 	var direction = (target.position - position).normalized()
-	var collision = move_and_collide(direction * speed * delta)
-	if collision != null:
-		collision.collider.call("die")
+	var slowdown = clamp((target.position - position).length() / speed, 0.2, 1)
+	position += direction * speed * delta * slowdown
+	

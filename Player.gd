@@ -1,6 +1,7 @@
-extends KinematicBody2D
+extends Area2D
 
 signal hit
+signal score
 
 export (float) var friction_coeff = 0.15
 export (float) var acceleration = 10
@@ -16,21 +17,16 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
 	if dead:
 		return
 	look_at(get_global_mouse_position())
 	var direction = (position - get_global_mouse_position()).normalized()
 	var distance = (position - get_global_mouse_position()).length()
 	distance = clamp(distance, 0.1, max_distance) / max_distance
-	velocity = -direction * distance * acceleration * 100
-	#velocity *= pow(friction_coeff * distance, delta)
-	#velocity += Vector2(acceleration, 0).rotated(rotation) * distance
-	velocity = move_and_slide(velocity)
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		if collision.collider.get("is_enemy"):
-			die()
+	if distance > 0.1:
+		velocity = -direction * distance * acceleration * 100
+		position += velocity * delta
 
 func die():
 	dead = true
@@ -42,3 +38,13 @@ func start(pos):
 	show()
 	dead = false
 	$CollisionShape2D.disabled = false
+
+
+func _on_Player_area_entered(area):
+	if area.is_in_group("enemies"):
+		die()
+	elif area.is_in_group("powerups"):
+		area.activate(self)
+
+func score(area):
+	emit_signal("score")
