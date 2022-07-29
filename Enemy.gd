@@ -12,7 +12,12 @@ func start(player):
 	target = player
 
 func _process(delta):
-	var direction = (target.position - position).normalized()
-	var slowdown = clamp((target.position - position).length() / speed, 0.2, 1)
-	position += direction * speed * delta * slowdown
+	if !get_parent().is_in_group("formations"):
+		move(delta)
+
+func move(delta):
+	if target != null:
+		var direction = (target.position - position).normalized()
+		var slowdown = clamp((target.position - position).length() / speed, 0.2, 1)
+		position += direction * speed * delta * slowdown
 	
