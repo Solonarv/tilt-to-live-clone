@@ -1,5 +1,6 @@
 ## General
 #TODO Tweak spawn rate. Pseudo-random works well, rate is just too high. Maybe rate should be dependent on how many are already around.
+Thought: maybe the rate is fine, actually.
 
 #TODO more types
 

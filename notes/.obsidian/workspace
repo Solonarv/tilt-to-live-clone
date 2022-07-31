@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Formations.md",
+            "file": "Powerups.md",
             "mode": "source",
             "source": false
           }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Formations.md",
+                "file": "Powerups.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +94,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Formations.md",
+                "file": "Powerups.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Formations.md"
+                "file": "Powerups.md"
               }
             }
           }
@@ -130,9 +130,9 @@
   },
   "active": "7162df382a203348",
   "lastOpenFiles": [
-    "Interface.md",
     "Juice.md",
     "Powerups.md",
+    "Interface.md",
     "Controls.md",
     "Formations.md"
   ]
