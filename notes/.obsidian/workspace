@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Juice.md",
+            "file": "Interface.md",
             "mode": "source",
             "source": false
           }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Juice.md",
+                "file": "Interface.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +94,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Juice.md",
+                "file": "Interface.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Juice.md"
+                "file": "Interface.md"
               }
             }
           }
@@ -130,8 +130,10 @@
   },
   "active": "7162df382a203348",
   "lastOpenFiles": [
+    "Juice.md",
+    "Interface.md",
+    "Powerups.md",
     "Controls.md",
-    "Formations.md",
-    "Powerups.md"
+    "Formations.md"
   ]
 }
