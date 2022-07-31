@@ -5,13 +5,13 @@
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Powerup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://CrossFormation.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Formation.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
 enemy_scene = ExtResource( 3 )
 powerup_scene = ExtResource( 5 )
-cross_scene = ExtResource( 6 )
+formation_scene = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0

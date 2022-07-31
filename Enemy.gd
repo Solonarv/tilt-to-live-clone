@@ -11,7 +11,7 @@ func _ready():
 func start(player):
 	target = player
 
-func _process(delta):
+func _physics_process(delta):
 	if !get_parent().is_in_group("formations"):
 		move(delta)
 

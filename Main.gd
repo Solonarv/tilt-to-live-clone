@@ -1,10 +1,11 @@
 extends Node
 
+class_name Main
 
 export (PackedScene) var enemy_scene
 export (PackedScene) var powerup_scene
-export (PackedScene) var cross_scene
-export var safe_zone = 100
+export (PackedScene) var formation_scene
+export var enemy_safe_zone = 100
 export var base_powerup_chance = 0.02
 export var cross_chance = 0.05
 
@@ -36,7 +37,8 @@ func new_game():
 func start_timers():
 	$MobSpawner.start()
 
-func gen_spawn_location(safe_zone_multiplier = 1):
+func gen_spawn_location(extra_safe_zone = 0):
+	var safe_zone = enemy_safe_zone + extra_safe_zone
 	var spawn_location
 	while true:
 		spawn_location = Vector2(rand_range(0, viewport.size.x), rand_range(0, viewport.size.y))
@@ -59,10 +61,10 @@ func _on_MobSpawner_timeout():
 		powerup_chance += base_powerup_chance
 		
 	if randf() < cross_chance:
-		var cross = cross_scene.instance()
-		cross.position = gen_spawn_location(5)
-		cross.start($Player)
-		add_child(cross)
+		var formation = formation_scene.instance()
+		var shape = formation.shapes[randi()%formation.shapes.size()]
+		add_child(formation)
+		formation.start($Player, shape)
 
 
 func _on_Player_score():
