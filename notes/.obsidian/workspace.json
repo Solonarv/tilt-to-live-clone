@@ -4,16 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "7162df382a203348",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Scoring.md",
-            "mode": "source",
-            "source": false
+        "id": "4e80ae9eddef1067",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7162df382a203348",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Powerups.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6ccb9c593461125d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Formations.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        }
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -31,7 +50,9 @@
             "type": "leaf",
             "state": {
               "type": "file-explorer",
-              "state": {}
+              "state": {
+                "sortOrder": "alphabetical"
+              }
             }
           },
           {
@@ -77,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scoring.md",
+                "file": "Formations.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scoring.md",
+                "file": "Formations.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scoring.md"
+                "file": "Formations.md"
               }
             }
           }
@@ -128,12 +149,24 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "7162df382a203348",
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "6ccb9c593461125d",
   "lastOpenFiles": [
-    "Interface.md",
-    "Formations.md",
+    "Look, Branding, Name.md",
     "Powerups.md",
-    "Juice.md",
-    "Controls.md"
+    "Controls.md",
+    "Formations.md",
+    "Interface.md",
+    "Scoring.md",
+    "Juice.md"
   ]
 }
