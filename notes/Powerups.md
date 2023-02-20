@@ -22,3 +22,8 @@ when touched, player starts charging up. After 1 second, fires a big wave of ene
 #TODO implement uno reverse card
 
 gives player a buff for X seconds. while active, if player collides with enemy, the enemy dies and the player does not.
+
+### Missiles
+#TODO implement missiles
+
+spawns some number of missiles that seek out concentrations of enemies where they explode leaving a stationary fireball for fractions of a second

@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Formations.md",
+                "file": "Scoring.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Formations.md",
+                "file": "Scoring.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Formations.md",
+                "file": "Scoring.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Formations.md"
+                "file": "Scoring.md"
               }
             }
           }
@@ -161,12 +161,12 @@
   },
   "active": "6ccb9c593461125d",
   "lastOpenFiles": [
-    "Look, Branding, Name.md",
     "Powerups.md",
-    "Controls.md",
-    "Formations.md",
+    "Look, Branding, Name.md",
+    "Juice.md",
     "Interface.md",
-    "Scoring.md",
-    "Juice.md"
+    "Formations.md",
+    "Controls.md",
+    "Scoring.md"
   ]
 }

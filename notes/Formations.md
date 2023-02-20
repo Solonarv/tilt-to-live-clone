@@ -13,6 +13,8 @@ Big circle of loosely-spaced dots that appears centered(ish) on the player, then
 play impact: must be recognized in time so player can get out between the dots. can lead to very juicy combo kills once the circle has closed.
 
 ### Aimed Arrow
+#TODO add aimed arrow formation
+
 wedge- or arrow-shaped formation
 
 appears pointing in random direction, rotates to point toward player, maximum rotation speed
@@ -22,4 +24,6 @@ once it's pointing at the player and keeps a lock for (specific time interval) i
 play impact: must watch the whole screen and pay attention to timing
 
 ### Shearing Walls
+#TODO add shearing walls formation
+
 walls with gaps that appear on opposite edges of the screen and sweep across it. each wall's dots fit into the other wall's gaps: when they overlap, there is no safe space
