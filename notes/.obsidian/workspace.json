@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scoring.md",
+                "file": "Interface.md",
                 "mode": "source",
                 "source": false
               }
@@ -61,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#TODO",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +78,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -98,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scoring.md",
+                "file": "Interface.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scoring.md",
+                "file": "Interface.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scoring.md"
+                "file": "Interface.md"
               }
             }
           }
@@ -161,12 +162,12 @@
   },
   "active": "6ccb9c593461125d",
   "lastOpenFiles": [
-    "Powerups.md",
-    "Look, Branding, Name.md",
-    "Juice.md",
-    "Interface.md",
     "Formations.md",
     "Controls.md",
-    "Scoring.md"
+    "Powerups.md",
+    "Scoring.md",
+    "Look, Branding, Name.md",
+    "Juice.md",
+    "Interface.md"
   ]
 }

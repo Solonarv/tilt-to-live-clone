@@ -31,4 +31,6 @@ position = Vector2( 640, 360 )
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="score" from="Player" to="." method="_on_Player_score"]
 [connection signal="timeout" from="MobSpawner" to="." method="_on_MobSpawner_timeout"]
+[connection signal="pause_game" from="HUD" to="." method="_on_HUD_pause_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="unpause_game" from="HUD" to="." method="_on_HUD_unpause_game"]

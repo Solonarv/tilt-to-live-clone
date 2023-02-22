@@ -18,11 +18,13 @@ func _ready():
 	randomize()
 	viewport = get_node("/root")
 	powerup_chance = base_powerup_chance
+	get_tree().paused = true
 
 
 func game_over():
 	$MobSpawner.stop()
 	$HUD.show_game_over()
+	get_tree().paused = true
 
 
 func new_game():
@@ -33,6 +35,7 @@ func new_game():
 	start_timers()
 	$HUD.update_score(score)
 	# $HUD.show_message("Get Ready")
+	get_tree().paused = false
 
 func start_timers():
 	$MobSpawner.start()
@@ -70,3 +73,11 @@ func _on_MobSpawner_timeout():
 func _on_Player_score():
 	score += 1
 	$HUD.update_score(score)
+
+
+func _on_HUD_pause_game():
+	get_tree().paused = true
+	
+
+func _on_HUD_unpause_game():
+	get_tree().paused = false
