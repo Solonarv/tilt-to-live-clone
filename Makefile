@@ -3,7 +3,7 @@ all: windows linux android html5zip
 .PHONY: windows linux android html5 html5zip all
 
 gdc := godot --no-window
-sources := $(shell git ls-files -cmo --exclude-standard)
+sources := $(shell git ls-files -cmo --exclude-standard | sed -e '/^notes.*/ d' )
 
 windows_files := out/windows/tilt-to-live-clone.exe
 windows: $(windows_files)
