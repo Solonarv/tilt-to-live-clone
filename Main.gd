@@ -18,13 +18,11 @@ func _ready():
 	randomize()
 	viewport = get_node("/root")
 	powerup_chance = base_powerup_chance
-	get_tree().paused = true
+	StateManager.connect("game_state_changed", self, "_on_game_state_changed")
 
 
 func game_over():
-	$MobSpawner.stop()
-	$HUD.show_game_over()
-	get_tree().paused = true
+	StateManager.die()
 
 
 func new_game():
@@ -34,11 +32,11 @@ func new_game():
 	get_tree().call_group("powerups", "queue_free")
 	start_timers()
 	$HUD.update_score(score)
-	# $HUD.show_message("Get Ready")
-	get_tree().paused = false
+
 
 func start_timers():
 	$MobSpawner.start()
+
 
 func gen_spawn_location(extra_safe_zone = 0):
 	var safe_zone = enemy_safe_zone + extra_safe_zone
@@ -75,9 +73,6 @@ func _on_Player_score():
 	$HUD.update_score(score)
 
 
-func _on_HUD_pause_game():
-	get_tree().paused = true
-	
-
-func _on_HUD_unpause_game():
-	get_tree().paused = false
+func _on_game_state_changed(old, new):
+	if old == StateManager.STATE_MENU && new == StateManager.STATE_PLAYING:
+		new_game()

@@ -24,6 +24,10 @@ config/name="Tilt to Live clone"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+StateManager="*res://StateManager.tscn"
+
 [display]
 
 window/size/width=1280
