@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Playtesting Results/Informal Playtest Round 1.md",
+                "file": "Controls.md",
                 "mode": "source",
                 "source": false
               }
@@ -73,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#TODO",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,7 +90,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -110,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Playtesting Results/Informal Playtest Round 1.md",
+                "file": "Controls.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Playtesting Results/Informal Playtest Round 1.md",
+                "file": "Controls.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Playtesting Results/Informal Playtest Round 1.md"
+                "file": "Controls.md"
               }
             }
           }
@@ -173,9 +174,9 @@
   },
   "active": "ec2072fa94348b70",
   "lastOpenFiles": [
-    "Playtesting Results",
     "Interface.md",
     "Playtesting Results/Informal Playtest Round 1.md",
+    "Playtesting Results",
     "Formations.md",
     "Controls.md",
     "Powerups.md",

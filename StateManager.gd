@@ -22,6 +22,13 @@ const should_pause = {
 	STATE_PLAYING_PAUSED: true
 }
 
+const state_mouse_mode = {
+	STATE_MENU: Input.MOUSE_MODE_VISIBLE,
+	STATE_PLAYING: Input.MOUSE_MODE_CAPTURED,
+	STATE_POST_GAME: Input.MOUSE_MODE_VISIBLE,
+	STATE_PLAYING_PAUSED: Input.MOUSE_MODE_VISIBLE
+}
+
 func _ready():
 	get_tree().paused = should_pause[game_state]
 
@@ -36,6 +43,7 @@ func _transition(old, new):
 	if game_state == old:
 		game_state = new
 		get_tree().paused = should_pause[new]
+		Input.set_mouse_mode(state_mouse_mode[new])
 		print_debug("went from %s to %s" % [state_str[old], state_str[new]])
 		emit_signal("game_state_changed", old, new)
 	else:

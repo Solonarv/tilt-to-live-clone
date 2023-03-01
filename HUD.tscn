@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://AAbsoluteEmpire-EaXpg.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://HUDLayer.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -18,6 +19,7 @@ script = ExtResource( 2 )
 [node name="BetweenGameHud" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
 [node name="Message" type="Label" parent="BetweenGameHud"]
 anchor_left = 0.5
@@ -50,6 +52,8 @@ one_shot = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
+active = false
 
 [node name="PausedMessage" type="Label" parent="PauseHud"]
 anchor_left = 0.5
@@ -79,6 +83,8 @@ text = "Resume"
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
+active = false
 
 [node name="YouDiedMessage" type="Label" parent="PostGameHud"]
 anchor_left = 0.5
@@ -121,10 +127,11 @@ text = "42
 align = 1
 max_lines_visible = 1
 
-[node name="InGameHud" type="Control" parent="."]
-visible = false
+[node name="IngameHud" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
+active = false
 
 [connection signal="pause_game" from="." to="." method="_on_pause_game"]
 [connection signal="pressed" from="BetweenGameHud/StartButton" to="." method="_on_StartButton_pressed"]
@@ -132,4 +139,4 @@ anchor_bottom = 1.0
 [connection signal="pressed" from="PauseHud/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="gui_input" from="PostGameHud/RestartButton" to="." method="_on_RestartButton_gui_input"]
 [connection signal="pressed" from="PostGameHud/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="gui_input" from="InGameHud" to="." method="_on_InGameHud_gui_input"]
+[connection signal="gui_input" from="IngameHud" to="." method="_on_IngameHud_gui_input"]

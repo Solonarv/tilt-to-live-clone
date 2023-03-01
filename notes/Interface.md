@@ -11,7 +11,7 @@ Score counter in a corner / edge
 placebo pause button in a corner (clicking/tapping literally anywhere pauses the game)
 
 ### Paused
-#TODO implement pausing
+implement pausing
 
 Playing field and score counter completely frozen in the background
 
@@ -20,9 +20,9 @@ big "unpause" button
 less big "quit"/"retry" button
 
 ### Dead
-#TODO implement dead screen
+implement dead screen
 
-Shows after a run ends, displays score and time taken
+Shows after a run ends, displays score and #TODO time taken
 
 background: playing field frozen at moment of death
 

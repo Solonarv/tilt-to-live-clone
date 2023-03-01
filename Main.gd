@@ -76,3 +76,15 @@ func _on_Player_score():
 func _on_game_state_changed(old, new):
 	if old == StateManager.STATE_MENU && new == StateManager.STATE_PLAYING:
 		new_game()
+		
+
+
+
+func _unhandled_input(event):
+	print_debug("hi")
+	match StateManager.game_state:
+		StateManager.STATE_PLAYING:
+			if event is InputEventMouseButton and event.pressed:
+				StateManager.pause()
+			elif event is InputEventMouseMotion:
+				$Player.motion(event)
