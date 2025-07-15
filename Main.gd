@@ -2,12 +2,12 @@ extends Node
 
 class_name Main
 
-export (PackedScene) var enemy_scene
-export (PackedScene) var powerup_scene
-export (PackedScene) var formation_scene
-export var enemy_safe_zone = 100
-export var base_powerup_chance = 0.02
-export var cross_chance = 0.05
+@export var enemy_scene: PackedScene
+@export var powerup_scene: PackedScene
+@export var formation_scene: PackedScene
+@export var enemy_safe_zone = 100
+@export var base_powerup_chance = 0.02
+@export var cross_chance = 0.05
 
 var powerup_chance
 var score
@@ -18,7 +18,7 @@ func _ready():
 	randomize()
 	viewport = get_node("/root")
 	powerup_chance = base_powerup_chance
-	StateManager.connect("game_state_changed", self, "_on_game_state_changed")
+	StateManager.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
 
 
 func game_over():
@@ -42,19 +42,19 @@ func gen_spawn_location(extra_safe_zone = 0):
 	var safe_zone = enemy_safe_zone + extra_safe_zone
 	var spawn_location
 	while true:
-		spawn_location = Vector2(rand_range(0, viewport.size.x), rand_range(0, viewport.size.y))
+		spawn_location = Vector2(randf_range(0, viewport.size.x), randf_range(0, viewport.size.y))
 		if (spawn_location - $Player.position).length() > safe_zone:
 			break
 	return spawn_location
 
 func _on_MobSpawner_timeout():
-	var enemy = enemy_scene.instance()
+	var enemy = enemy_scene.instantiate()
 	enemy.position = gen_spawn_location()
 	enemy.start($Player)
 	add_child(enemy)
 	
 	if randf() < powerup_chance:
-		var powerup = powerup_scene.instance()
+		var powerup = powerup_scene.instantiate()
 		powerup.position = gen_spawn_location()
 		add_child(powerup)
 		powerup_chance = base_powerup_chance
@@ -62,10 +62,10 @@ func _on_MobSpawner_timeout():
 		powerup_chance += base_powerup_chance
 		
 	if randf() < cross_chance:
-		var formation = formation_scene.instance()
+		var formation = formation_scene.instantiate()
 		var shape = formation.shapes[randi()%formation.shapes.size()]
 		add_child(formation)
-		formation.start($Player, shape)
+		formation.begin($Player, shape)
 
 
 func _on_Player_score():
@@ -81,10 +81,9 @@ func _on_game_state_changed(old, new):
 
 
 func _unhandled_input(event):
-	print_debug("hi")
 	match StateManager.game_state:
 		StateManager.STATE_PLAYING:
 			if event is InputEventMouseButton and event.pressed:
 				StateManager.pause()
 			elif event is InputEventMouseMotion:
-				$Player.motion(event)
+				$Player.on_motion(event.relative, event.position)

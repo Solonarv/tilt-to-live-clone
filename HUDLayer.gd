@@ -2,7 +2,7 @@ extends Control
 
 class_name HUDLayer
 
-export var active: bool = true
+@export var active: bool = true
 
 
 # Called when the node enters the scene tree for the first time.

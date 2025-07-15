@@ -4,3 +4,4 @@ out/
 *.import
 export_presets.cfg
 *~
+.godot

@@ -1,19 +1,19 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://AAbsoluteEmpire-EaXpg.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://AAbsoluteEmpire-EaXpg.ttf" type="FontFile" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
 [ext_resource path="res://HUDLayer.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 72
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 60
 font_data = ExtResource( 1 )
 
 [node name="HUD" type="CanvasLayer"]
-pause_mode = 2
+process_mode = 3
 script = ExtResource( 2 )
 
 [node name="BetweenGameHud" type="Control" parent="."]
@@ -24,11 +24,11 @@ script = ExtResource( 3 )
 [node name="Message" type="Label" parent="BetweenGameHud"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -330.0
-margin_top = 151.0
-margin_right = 370.0
-margin_bottom = 300.0
-custom_fonts/font = SubResource( 1 )
+offset_left = -330.0
+offset_top = 151.0
+offset_right = 370.0
+offset_bottom = 300.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Dodge the
 Dots!"
 align = 1
@@ -37,11 +37,11 @@ align = 1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -160.0
-margin_top = 400.0
-margin_right = 160.0
-margin_bottom = -240.0
-custom_fonts/font = SubResource( 1 )
+offset_left = -160.0
+offset_top = 400.0
+offset_right = 160.0
+offset_bottom = -240.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="BetweenGameHud"]
@@ -58,11 +58,11 @@ active = false
 [node name="PausedMessage" type="Label" parent="PauseHud"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -330.0
-margin_top = 151.0
-margin_right = 370.0
-margin_bottom = 300.0
-custom_fonts/font = SubResource( 1 )
+offset_left = -330.0
+offset_top = 151.0
+offset_right = 370.0
+offset_bottom = 300.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Game Paused
 "
 align = 1
@@ -72,11 +72,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = 40.0
-margin_right = 160.0
-margin_bottom = 120.0
-custom_fonts/font = SubResource( 2 )
+offset_left = -160.0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 120.0
+theme_override_fonts/font = SubResource( 2 )
 text = "Resume"
 
 [node name="PostGameHud" type="Control" parent="."]
@@ -89,11 +89,11 @@ active = false
 [node name="YouDiedMessage" type="Label" parent="PostGameHud"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -330.0
-margin_top = 151.0
-margin_right = 370.0
-margin_bottom = 300.0
-custom_fonts/font = SubResource( 1 )
+offset_left = -330.0
+offset_top = 151.0
+offset_right = 370.0
+offset_bottom = 300.0
+theme_override_fonts/font = SubResource( 1 )
 text = "YOU DIED
 "
 align = 1
@@ -103,11 +103,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = 40.0
-margin_right = 160.0
-margin_bottom = 120.0
-custom_fonts/font = SubResource( 2 )
+offset_left = -160.0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 120.0
+theme_override_fonts/font = SubResource( 2 )
 text = "Restart"
 
 [node name="ScoreLabel" type="Label" parent="."]
@@ -115,13 +115,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -80.0
-margin_top = -716.0
-margin_right = 80.0
-margin_bottom = -643.0
+offset_left = -80.0
+offset_top = -716.0
+offset_right = 80.0
+offset_bottom = -643.0
 grow_horizontal = 2
-rect_pivot_offset = Vector2( 80, 0 )
-custom_fonts/font = SubResource( 1 )
+pivot_offset = Vector2( 80, 0 )
+theme_override_fonts/font = SubResource( 1 )
 text = "42
 "
 align = 1

@@ -3,10 +3,10 @@ extends CanvasLayer
 signal start_game
 signal pause_game
 signal resume_game
-signal mouse_motion_input(rel)
+signal mouse_motion_input(rel, pos)
 
 func _ready():
-	StateManager.connect("game_state_changed", self, "_on_game_state_changed")
+	StateManager.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
 
 func show_message(text):
 	$Message.text = text
@@ -16,11 +16,11 @@ func show_message(text):
 
 func show_game_over():
 	show_message("Game Over")
-	yield($MessageTimer, "timeout")
+	await $MessageTimer.timeout
 	
 	$Message.text = "Dodge the\nDots!"
 	$Message.show()
-	yield(get_tree().create_timer(1), "timeout")
+	await get_tree().create_timer(1).timeout
 	$StartButton.show()
 
 
@@ -65,7 +65,7 @@ func _on_game_state_changed(old, new):
 
 
 func _unhandled_input(event):
-	print_debug("hi")
+	pass
 
 
 func _on_IngameHud_gui_input(event):
@@ -75,4 +75,4 @@ func _on_IngameHud_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		StateManager.pause()
 	elif event is InputEventMouseMotion:
-		emit_signal("mouse_motion_input", event.relative)
+		emit_signal("mouse_motion_input", event.relative, event.position)

@@ -1,22 +1,30 @@
+class_name Player
 extends Area2D
 
 signal hit
 signal score
 
-export (float) var friction_coeff = 0.15
-export (float) var acceleration = 7
-export (float) var max_distance = 100
-export (float) var dead_zone = 10
+@export var friction_coeff: float = 0.15
+@export var acceleration: float = 7
+@export var max_distance: float = 100
+@export var dead_zone: float = 10
 
 
-export (float) var input_falloff = 0
+@export var input_falloff: float = 0
 var input_falloff_compl = 1
 
 
 var velocity = Vector2(0, 0)
 var dead = false
 
+enum INPUT_MODE {
+	ABS, REL
+}
+
+@export var input_mode: INPUT_MODE = INPUT_MODE.REL
+
 var last_input = Vector2(0, 0)
+var last_input_abs = Vector2(0, 0)
 var relative_target = Vector2(0, 0)
 
 
@@ -29,7 +37,11 @@ func _ready():
 func _physics_process(delta):
 	if dead:
 		return
-	relative_target = relative_target + last_input
+	match input_mode:
+		INPUT_MODE.ABS:
+			relative_target = last_input_abs - position
+		INPUT_MODE.REL:
+			relative_target = relative_target + last_input
 	var direction = relative_target.normalized()
 	var distance = relative_target.length()
 	var clamped_distance = clamp(distance, 0, max_distance)
@@ -43,8 +55,9 @@ func _physics_process(delta):
 	last_input = Vector2(0,0)
 
 
-func motion(rel: Vector2):
+func on_motion(rel: Vector2, pos: Vector2):
 	last_input += rel
+	last_input_abs = pos
 	
 
 func die():
@@ -59,11 +72,13 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 
-func _on_Player_area_entered(area):
+func _on_Player_area_entered(area : Area2D):
+	print_debug("player entered area: " + area.name)
 	if area.is_in_group("enemies"):
 		die()
 	elif area.is_in_group("powerups"):
+		print_debug("it's a powerup!")
 		area.activate(self)
 
-func score(area):
+func get_score(area):
 	emit_signal("score")

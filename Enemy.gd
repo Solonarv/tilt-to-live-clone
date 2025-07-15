@@ -2,7 +2,7 @@ extends Area2D
 
 var is_enemy = true
 var target
-export var speed = 100
+@export var speed = 100
 
 
 func _ready():
