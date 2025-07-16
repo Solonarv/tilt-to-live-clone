@@ -16,8 +16,7 @@ var kind : POWERUP_KIND
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	kind = randi()%2
-	pass # Replace with function body.
+	kind = 0  # randomize once explosion actually works
 
 func activate(player):
 	var script : Area2D = POWERUP_SCRIPTS[kind]

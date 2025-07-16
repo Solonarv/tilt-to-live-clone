@@ -9,7 +9,7 @@ func _ready():
 	for area in get_overlapping_areas():
 		maybe_kill(area)
 	$Timer.start()
-	print_debug("explosion ready")
+	print_debug("explosion ready, parent is " + str(get_parent()))
 
 func begin(source: Pickup, player : Player):
 	source.get_parent().call_deferred("add_child", self)
@@ -23,7 +23,13 @@ func _on_Timer_timeout():
 func _on_area_entered(area):
 	maybe_kill(area)
 
+func _physics_process(delta: float) -> void:
+	for area in get_overlapping_areas():
+		maybe_kill(area)
+
 func maybe_kill(area):
+	if (area is Player || area is Pickup): return
+	print_debug("maybe killing " + str(area))
 	if area.is_in_group("enemies"):
 		area.queue_free()
 		if activator != null: activator.get_score(area)

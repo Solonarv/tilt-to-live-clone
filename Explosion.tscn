@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://5uyafryh8los" path="res://explosion_sprite.png" id="2_n4djn"]
 
 [node name="Area2D" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
