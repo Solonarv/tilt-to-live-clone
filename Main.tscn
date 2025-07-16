@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://cjp8ngniv4xin" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" uid="uid://cg4upkhmi1b30" path="res://Main.gd" id="2"]
-[ext_resource type="PackedScene" path="res://Enemy.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cbbom1x5l6idk" path="res://Enemy.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cepwk1ouasbsj" path="res://powerups/Powerup.tscn" id="3_3dxm6"]
 [ext_resource type="PackedScene" path="res://HUD.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://c4so1wrrp21ta" path="res://Pickup.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Formation.tscn" id="6"]
 
 [node name="Main" type="Node"]
 script = ExtResource("2")
 enemy_scene = ExtResource("3")
-powerup_scene = ExtResource("5")
+powerup_scene = ExtResource("3_3dxm6")
 formation_scene = ExtResource("6")
 
 [node name="ColorRect" type="ColorRect" parent="."]

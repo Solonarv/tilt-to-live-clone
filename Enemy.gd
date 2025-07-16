@@ -1,7 +1,9 @@
+class_name Enemy
 extends Area2D
 
 var is_enemy = true
 var target
+var in_formation = false
 @export var speed = 100
 
 
@@ -12,7 +14,7 @@ func start(player):
 	target = player
 
 func _physics_process(delta):
-	if !get_parent().is_in_group("formations"):
+	if !in_formation:
 		move(delta)
 
 func move(delta):

@@ -76,9 +76,6 @@ func _on_Player_area_entered(area : Area2D):
 	print_debug("player entered area: " + area.name)
 	if area.is_in_group("enemies"):
 		die()
-	elif area.is_in_group("powerups"):
-		print_debug("it's a powerup!")
-		area.activate(self)
 
 func get_score(area):
 	emit_signal("score")

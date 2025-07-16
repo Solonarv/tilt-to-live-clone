@@ -21,7 +21,7 @@ func _ready():
 
 func begin(player, shape):
 	target = player
-	print_debug(shape)
+	# print_debug(shape)
 	populate(shape)
 	if shape == "cross":
 		var direction = Vector2(1,0).rotated(randf_range(0, 2*PI))
@@ -57,8 +57,9 @@ func make_rect(width, height, offset):
 			
 
 func add_child_at(pos):
-	var enemy = enemy_scene.instantiate()
+	var enemy : Enemy = enemy_scene.instantiate()
 	enemy.position = pos
+	enemy.in_formation = true
 	children.append(enemy)
 	add_child(enemy)
 	enemy.start(target)

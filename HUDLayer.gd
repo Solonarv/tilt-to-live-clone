@@ -27,14 +27,12 @@ func deactivate():
 
 
 func _make_active():
-	print_debug("become active")
 	active = true
 	mouse_filter = MOUSE_FILTER_PASS
 	show()
 
 
 func _make_inactive():
-	print_debug("become inactive")
 	active = false
 	mouse_filter = MOUSE_FILTER_IGNORE
 	hide()
