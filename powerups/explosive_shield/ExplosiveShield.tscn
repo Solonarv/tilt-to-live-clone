@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn1wkrx5ctbdq"]
+
+[ext_resource type="Script" uid="uid://bdanh0oqs2rau" path="res://powerups/explosive_shield/ExplosiveShield.gd" id="1_hlf4l"]
+[ext_resource type="Shape2D" uid="uid://dp4fmw7l516n4" path="res://powerups/explosive_shield/explosion_shape.tres" id="2_hlf4l"]
+[ext_resource type="Texture2D" uid="uid://bb5hwxje88085" path="res://powerups/explosive_shield/explosion_sprite.png" id="3_lkv1i"]
+
+[node name="ExplosiveShield" type="Area2D"]
+script = ExtResource("1_hlf4l")
+metadata/_custom_type_script = "uid://bjxcjxq7n8g6u"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_hlf4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("3_lkv1i")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
