@@ -7,6 +7,7 @@ signal mouse_motion_input(rel, pos)
 
 func _ready():
 	StateManager.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
+	$PauseHud/RotateInputModeButton.text = $InputHandler.current_input_mode_name()
 
 func show_message(text):
 	$Message.text = text
@@ -76,3 +77,9 @@ func _on_IngameHud_gui_input(event):
 		StateManager.pause()
 	elif event is InputEventMouseMotion:
 		emit_signal("mouse_motion_input", event.relative, event.position)
+
+
+func _on_rotate_input_mode_button_pressed() -> void:
+	var hdl: InputHandler = $InputHandler
+	hdl.next_input_mode()
+	$PauseHud/RotateInputModeButton.text = hdl.current_input_mode_name()

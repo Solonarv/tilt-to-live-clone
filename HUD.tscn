@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8mvrhgkbu2pa"]
+[gd_scene load_steps=7 format=3 uid="uid://c8mvrhgkbu2pa"]
 
 [ext_resource type="FontFile" uid="uid://3mcprkkyqpft" path="res://AAbsoluteEmpire-EaXpg.ttf" id="1"]
 [ext_resource type="Script" uid="uid://b1nt6wnos636d" path="res://HUD.gd" id="2"]
+[ext_resource type="Script" uid="uid://ctldwdx22t8lh" path="res://InputHandler.gd" id="2_ne771"]
 [ext_resource type="Script" uid="uid://dqjmbxf4r4vfx" path="res://HUDLayer.gd" id="3"]
 
 [sub_resource type="FontFile" id="1"]
@@ -24,7 +25,12 @@ cache/0/16/0/scale = 1.0
 process_mode = 3
 script = ExtResource("2")
 
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("2_ne771")
+metadata/_custom_type_script = "uid://ctldwdx22t8lh"
+
 [node name="BetweenGameHud" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,7 +69,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PauseHud" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,6 +103,13 @@ offset_right = 160.0
 offset_bottom = 120.0
 theme_override_fonts/font = SubResource("2")
 text = "Resume"
+
+[node name="RotateInputModeButton" type="Button" parent="PauseHud"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 400.0
+offset_right = 390.0
+offset_bottom = 484.0
 
 [node name="PostGameHud" type="Control" parent="."]
 visible = false
@@ -168,6 +180,8 @@ active = false
 [connection signal="pressed" from="BetweenGameHud/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="BetweenGameHud/MessageTimer" to="." method="_on_MessageTimer_timeout"]
 [connection signal="pressed" from="PauseHud/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="PauseHud/RotateInputModeButton" to="." method="_on_rotate_input_mode_button_pressed"]
 [connection signal="gui_input" from="PostGameHud/RestartButton" to="." method="_on_RestartButton_gui_input"]
 [connection signal="pressed" from="PostGameHud/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="gui_input" from="IngameHud" to="." method="_on_IngameHud_gui_input"]
+[connection signal="gui_input" from="IngameHud" to="InputHandler" method="_on_ingame_hud_gui_input"]

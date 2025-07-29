@@ -5,14 +5,15 @@ signal hit
 signal score
 
 @export var friction_coeff: float = 0.15
-@export var acceleration: float = 7
+@export var acceleration: float = 700
 @export var max_distance: float = 100
-@export var dead_zone: float = 10
+@export var dead_zone_squared: float = 0.01
 
 
 @export var input_falloff: float = 0
 var input_falloff_compl = 1
 
+var input_handler: InputHandler
 
 var velocity = Vector2(0, 0)
 var dead = false
@@ -37,28 +38,17 @@ func _ready():
 func _physics_process(delta):
 	if dead:
 		return
-	match input_mode:
-		INPUT_MODE.ABS:
-			relative_target = last_input_abs - position
-		INPUT_MODE.REL:
-			relative_target = relative_target + last_input
-	var direction = relative_target.normalized()
-	var distance = relative_target.length()
-	var clamped_distance = clamp(distance, 0, max_distance)
-	if clamped_distance > 0:
-		relative_target *= clamped_distance / distance
-		$IndicatorLine.points[1] = Vector2(clamped_distance, 0)
+	relative_target = input_handler.get_player_control(position)
+	if !relative_target.is_zero_approx():
+		$IndicatorLine.points[1] = Vector2(relative_target.length()*100, 0)
 		look_at(position + relative_target)
-		if clamped_distance > dead_zone:
+		if true: #relative_target.length_squared() > dead_zone_squared:
 			velocity = relative_target * acceleration
 			position += velocity * delta
-	last_input = Vector2(0,0)
 
 
-func on_motion(rel: Vector2, pos: Vector2):
-	last_input += rel
-	last_input_abs = pos
-	
+func set_input_handler(hdl: InputHandler) -> void:
+	input_handler = hdl
 
 func die():
 	dead = true

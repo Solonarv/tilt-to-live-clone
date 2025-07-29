@@ -19,6 +19,7 @@ func _ready():
 	viewport = get_node("/root")
 	powerup_chance = base_powerup_chance
 	StateManager.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
+	$Player.set_input_handler($HUD/InputHandler)
 
 
 func game_over():
@@ -86,4 +87,4 @@ func _unhandled_input(event):
 			if event is InputEventMouseButton and event.pressed:
 				StateManager.pause()
 			elif event is InputEventMouseMotion:
-				$Player.on_motion(event.relative, event.position)
+				$HUD/InputHandler.on_input(event)
