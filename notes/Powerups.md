@@ -9,7 +9,6 @@ Thought: maybe the rate is fine, actually.
 when touched, turns into a stationary fireball for 1 second. any enemies that touch it are incinerated.
 
 ### Explodey Shield
-#TODO implement explodey shield
 
 when touched, gives the player a shield. when the shield touches an enemy, the shield explodes, leaving a stationary fireball for 1 second.
 

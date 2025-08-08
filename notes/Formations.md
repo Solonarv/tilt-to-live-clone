@@ -12,6 +12,10 @@ Big circle of loosely-spaced dots that appears centered(ish) on the player, then
 
 play impact: must be recognized in time so player can get out between the dots. can lead to very juicy combo kills once the circle has closed.
 
+### Unstable Explosion
+Tightish cloud of dots that are shaking/vibrating. They suck in loose dots to grow, become more unstable, and also become more unstable over time (shaking more violently). When instability passes a threshold, it explodes, flinging its component dots outward at high velocity (with some variance).
+
+Forms any time too many dots become too close to each other.
 ### Aimed Arrow
 #TODO add aimed arrow formation
 

@@ -84,7 +84,4 @@ func _on_game_state_changed(old, new):
 func _unhandled_input(event):
 	match StateManager.game_state:
 		StateManager.STATE_PLAYING:
-			if event is InputEventMouseButton and event.pressed:
-				StateManager.pause()
-			elif event is InputEventMouseMotion:
-				$HUD/InputHandler.on_input(event)
+			$HUD/InputHandler.on_input(event)

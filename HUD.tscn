@@ -183,5 +183,4 @@ active = false
 [connection signal="pressed" from="PauseHud/RotateInputModeButton" to="." method="_on_rotate_input_mode_button_pressed"]
 [connection signal="gui_input" from="PostGameHud/RestartButton" to="." method="_on_RestartButton_gui_input"]
 [connection signal="pressed" from="PostGameHud/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="gui_input" from="IngameHud" to="." method="_on_IngameHud_gui_input"]
 [connection signal="gui_input" from="IngameHud" to="InputHandler" method="_on_ingame_hud_gui_input"]

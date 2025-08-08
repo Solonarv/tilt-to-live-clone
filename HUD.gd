@@ -66,17 +66,9 @@ func _on_game_state_changed(old, new):
 
 
 func _unhandled_input(event):
+	#print_debug("unhandled input! " + str(event))
 	pass
 
-
-func _on_IngameHud_gui_input(event):
-	if StateManager.game_state != StateManager.STATE_PLAYING:
-		print_debug("got input from ingame hud when it should be inactive")
-		return
-	if event is InputEventMouseButton and event.pressed:
-		StateManager.pause()
-	elif event is InputEventMouseMotion:
-		emit_signal("mouse_motion_input", event.relative, event.position)
 
 
 func _on_rotate_input_mode_button_pressed() -> void:
