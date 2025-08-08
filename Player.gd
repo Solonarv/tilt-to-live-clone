@@ -45,6 +45,7 @@ func _physics_process(delta):
 		if true: #relative_target.length_squared() > dead_zone_squared:
 			velocity = relative_target * acceleration
 			position += velocity * delta
+			position = position.clamp(Vector2.ZERO, $/root.size)
 
 
 func set_input_handler(hdl: InputHandler) -> void:

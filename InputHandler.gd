@@ -13,9 +13,15 @@ var last_down: Vector3 = Vector3.ZERO
 @onready var input_proxy = Input
 @onready var base_down: Vector3 = Input.get_gravity()
 
+@onready var touch_indicator : CanvasLayer = $"../TouchDragIndicator"
+@onready var touch_indicator_line : Line2D = $"../TouchDragIndicator/Line2D"
 var touch_anchor := Vector2.ZERO
 var last_touch_pos := Vector2.ZERO
-var currently_touching := false
+var currently_touching : bool = false :
+	get: return currently_touching
+	set(val):
+		currently_touching = val
+		touch_indicator.visible = val
 var active_touch_index : int = -1
 
 func _ready() -> void:
@@ -41,7 +47,7 @@ func get_player_control(player_pos: Vector2) -> Vector2:
 		INPUT_MODE.TILT:
 			return fix_control_length(Vector2(last_down.x, last_down.y), 10)
 		INPUT_MODE.TOUCH_DRAG:
-			return fix_control_length(last_touch_pos - touch_anchor, 100)
+			return fix_control_length(last_touch_pos - touch_anchor, 300)
 	return Vector2(0,0)
 
 
@@ -54,6 +60,7 @@ func on_input(event: InputEvent) -> void:
 			last_mouse_pos = event.position
 		elif using_touch():
 			last_touch_pos = event.position
+			touch_indicator_line.points[1] = last_touch_pos - touch_anchor
 	elif event is InputEventMouseButton:
 		print_debug("mouse button in state %s, event is: %s" % [current_input_mode_name(), event])
 		if event.pressed and not using_touch():
@@ -62,14 +69,21 @@ func on_input(event: InputEvent) -> void:
 		if mode == INPUT_MODE.TOUCH_DRAG:
 			if event.pressed:
 				touch_anchor = event.position
+				touch_indicator.transform.origin = touch_anchor
 				print_debug("touch_drag start at %s" % touch_anchor)
 				currently_touching = true
+				last_touch_pos = touch_anchor
 			else:
 				currently_touching = false
+	elif event is InputEventKey:
+		if event.pressed and not event.is_echo():
+			StateManager.toggle_pause()
 
 func next_input_mode() -> void:
 	mode += 1
 	mode %= INPUT_MODE.size()
+	if not using_touch():
+		currently_touching = false
 
 func current_input_mode_name() -> String:
 	return INPUT_MODE.keys()[mode]

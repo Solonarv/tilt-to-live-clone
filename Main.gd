@@ -82,6 +82,4 @@ func _on_game_state_changed(old, new):
 
 
 func _unhandled_input(event):
-	match StateManager.game_state:
-		StateManager.STATE_PLAYING:
-			$HUD/InputHandler.on_input(event)
+	$HUD/InputHandler.on_input(event)

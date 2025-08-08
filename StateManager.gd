@@ -60,6 +60,13 @@ func pause():
 func resume():
 	_transition(STATE_PLAYING_PAUSED, STATE_PLAYING)
 
+func toggle_pause():
+	match game_state:
+		STATE_PLAYING:
+			pause()
+		STATE_PLAYING_PAUSED:
+			resume()
+
 func start():
 	_transition(STATE_MENU, STATE_PLAYING)
 
