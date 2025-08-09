@@ -6,7 +6,6 @@
 
 [node name="Player" type="Area2D"]
 z_index = 1
-position = Vector2(490, 309)
 collision_layer = 4
 script = ExtResource("1")
 
@@ -24,4 +23,4 @@ points = PackedVector2Array(0, 0, 0, 0)
 width = 1.0
 default_color = Color(1, 0.807843, 0.4, 1)
 
-[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
+[connection signal="area_entered" from="." to="." method="_on_player_area_entered"]

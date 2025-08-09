@@ -1,6 +1,8 @@
 extends KillingArea
 
-var expanded : bool = false
+
+var expanded: bool = false
+
 
 func _ready() -> void:
 	super()

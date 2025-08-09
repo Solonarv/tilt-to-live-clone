@@ -2,31 +2,31 @@ extends Control
 
 class_name HUDLayer
 
-@export var active: bool = true
+@export var active := true
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	if active:
 		_make_active()
 	else:
 		_make_inactive()
 
-func activate():
+
+func activate() -> void:
 	if active:
 		print_debug("activate() on active HUDLayer")
 	else:
 		_make_active()
 
 
-func deactivate():
+func deactivate() -> void:
 	if !active:
 		print_debug("deactivate() on inactive HUDLayer")
 	else:
 		_make_inactive()
 
 
-func _make_active():
+func _make_active() -> void:
 	active = true
 	mouse_filter = MOUSE_FILTER_PASS
 	show()

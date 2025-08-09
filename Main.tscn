@@ -20,7 +20,6 @@ anchor_bottom = 1.0
 color = Color(0.0470588, 0.258824, 0.0745098, 1)
 
 [node name="Player" parent="." instance=ExtResource("1")]
-input_mode = 0
 
 [node name="MobSpawner" type="Timer" parent="."]
 wait_time = 0.2
@@ -30,9 +29,12 @@ position = Vector2(640, 360)
 
 [node name="HUD" parent="." instance=ExtResource("4")]
 
+[node name="MultiplierGracePeriod" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="score" from="Player" to="." method="_on_Player_score"]
-[connection signal="timeout" from="MobSpawner" to="." method="_on_MobSpawner_timeout"]
-[connection signal="mouse_motion_input" from="HUD" to="Player" method="on_motion"]
+[connection signal="scored" from="Player" to="." method="_on_player_scored"]
+[connection signal="timeout" from="MobSpawner" to="." method="_on_mob_spawner_timeout"]
 [connection signal="pause_game" from="HUD" to="." method="_on_HUD_pause_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="timeout" from="MultiplierGracePeriod" to="." method="_on_multiplier_grace_period_timeout"]

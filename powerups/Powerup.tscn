@@ -10,8 +10,7 @@
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_bgipy")
-explosion_scene = ExtResource("2_vvkec")
-explosive_shield_scene = ExtResource("3_mo3v3")
+powerups = Array[PackedScene]([ExtResource("3_mo3v3"), ExtResource("2_vvkec")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_q0w1j")

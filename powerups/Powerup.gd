@@ -1,16 +1,20 @@
 class_name Powerup
 extends Area2D
 
-@export var explosion_scene: PackedScene
-@export var explosive_shield_scene: PackedScene
+
+@export var powerups: Array[PackedScene]
+
 
 var kind: int
 
+
 func _ready() -> void:
-	kind = randi()%2
+	kind = randi_range(0, powerups.size() - 1)
+
 
 func get_powerup() -> PackedScene:
-	return [explosion_scene, explosive_shield_scene][kind]
+	return powerups[kind]
+
 
 func _on_area_entered(area: Area2D) -> void:
 	if !(area is Player):

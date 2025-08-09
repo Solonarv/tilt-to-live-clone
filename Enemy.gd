@@ -1,23 +1,23 @@
 class_name Enemy
 extends Area2D
 
-var is_enemy = true
-var target
-var in_formation = false
-@export var speed = 100
+
+@export var speed := 100.0
+
+var target: Player
+var in_formation := false
 
 
-func _ready():
-	pass
-
-func start(player):
-	target = player
-
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if !in_formation:
 		move(delta)
 
-func move(delta):
+
+func start(player: Player) -> void:
+	target = player
+
+
+func move(delta: float) -> void:
 	if target != null:
 		var direction = (target.position - position).normalized()
 		var slowdown = clamp((target.position - position).length() / speed, 0.2, 1)

@@ -1,74 +1,77 @@
+class_name HUD
 extends CanvasLayer
 
 signal start_game
 signal pause_game
 signal resume_game
-signal mouse_motion_input(rel, pos)
 
-func _ready():
-	StateManager.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
+@onready var message: Label = $BetweenGameHud/Message
+@onready var message_timer: Timer = $BetweenGameHud/MessageTimer
+@onready var start_button: Button = $BetweenGameHud/StartButton
+@onready var score_label: Label = $ScoreLabel
+
+
+func _ready() -> void:
+	StateManager.connect("game_state_changed", self._on_game_state_changed)
 	$PauseHud/RotateInputModeButton.text = $InputHandler.current_input_mode_name()
 
-func show_message(text):
-	$Message.text = text
-	$Message.show()
-	$MessageTimer.start()
+
+func show_message(text: String) -> void:
+	message.text = text
+	message.show()
+	message_timer.start()
 
 
-func show_game_over():
+func show_game_over() -> void:
 	show_message("Game Over")
-	await $MessageTimer.timeout
+	await message_timer.timeout
 	
-	$Message.text = "Dodge the\nDots!"
-	$Message.show()
+	message.text = "Dodge the\nDots!"
+	message.show()
 	await get_tree().create_timer(1).timeout
-	$StartButton.show()
+	start_button.show()
 
 
-func update_score(score):
-	$ScoreLabel.text = str(score)
+func update_score(score: int, mult: float) -> void:
+	score_label.text = "%d  x %.1f" % [score, mult]
 
 
-func _on_MessageTimer_timeout():
+func _on_MessageTimer_timeout() -> void:
 	$Message.hide()
 
 
-func _on_StartButton_pressed():
+func _on_StartButton_pressed() -> void:
 	StateManager.start()
 
 
-func _on_ResumeButton_pressed():
+func _on_ResumeButton_pressed() -> void:
 	StateManager.resume()
 
 
-func _on_RestartButton_pressed():
+func _on_RestartButton_pressed() -> void:
 	StateManager.restart()
 
 
-func _on_game_state_changed(old, new):
-	if old == StateManager.STATE_MENU:
-		$BetweenGameHud.deactivate()
-	elif old == StateManager.STATE_PLAYING_PAUSED:
-		$PauseHud.deactivate()
-	elif old == StateManager.STATE_POST_GAME:
-		$PostGameHud.deactivate()
-	elif old == StateManager.STATE_PLAYING:
-		$IngameHud.deactivate()
+func _on_game_state_changed(old: StateManager.STATE, new: StateManager.STATE) -> void:
+	match old:
+		StateManager.STATE.MENU:
+			$BetweenGameHud.deactivate()
+		StateManager.STATE.PLAYING_PAUSED:
+			$PauseHud.deactivate()
+		StateManager.STATE.POST_GAME:
+			$PostGameHud.deactivate()
+		StateManager.STATE.PLAYING:
+			$IngameHud.deactivate()
 	
-	if new == StateManager.STATE_MENU:
-		$BetweenGameHud.activate()
-	elif new == StateManager.STATE_PLAYING_PAUSED:
-		$PauseHud.activate()
-	elif new == StateManager.STATE_POST_GAME:
-		$PostGameHud.activate()
-	elif new == StateManager.STATE_PLAYING:
-		$IngameHud.activate()
-
-
-func _unhandled_input(event):
-	#print_debug("unhandled input! " + str(event))
-	pass
-
+	match new:
+		StateManager.STATE.MENU:
+			$BetweenGameHud.activate()
+		StateManager.STATE.PLAYING_PAUSED:
+			$PauseHud.activate()
+		StateManager.STATE.POST_GAME:
+			$PostGameHud.activate()
+		StateManager.STATE.PLAYING:
+			$IngameHud.activate()
 
 
 func _on_rotate_input_mode_button_pressed() -> void:

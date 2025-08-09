@@ -1,33 +1,35 @@
 extends Node
 
-signal game_state_changed(old, new)
+signal game_state_changed(old: STATE, new: STATE)
 
-var game_state = STATE_MENU
-
-enum {
-	STATE_MENU, STATE_PLAYING, STATE_POST_GAME, STATE_PLAYING_PAUSED
+enum STATE {
+	MENU, PLAYING, POST_GAME, PLAYING_PAUSED
 }
 
 const state_str = {
-	STATE_MENU: "MENU",
-	STATE_PLAYING: "PLAYING",
-	STATE_POST_GAME: "POST_GAME",
-	STATE_PLAYING_PAUSED: "PLAYING_PAUSED"
+	STATE.MENU: "MENU",
+	STATE.PLAYING: "PLAYING",
+	STATE.POST_GAME: "POST_GAME",
+	STATE.PLAYING_PAUSED: "PLAYING_PAUSED"
 }
 
 const should_pause = {
-	STATE_MENU: true,
-	STATE_PLAYING: false,
-	STATE_POST_GAME: true,
-	STATE_PLAYING_PAUSED: true
+	STATE.MENU: true,
+	STATE.PLAYING: false,
+	STATE.POST_GAME: true,
+	STATE.PLAYING_PAUSED: true
 }
 
 const state_mouse_mode = {
-	STATE_MENU: Input.MOUSE_MODE_VISIBLE,
-	STATE_PLAYING: Input.MOUSE_MODE_VISIBLE,
-	STATE_POST_GAME: Input.MOUSE_MODE_VISIBLE,
-	STATE_PLAYING_PAUSED: Input.MOUSE_MODE_VISIBLE
+	STATE.MENU: Input.MOUSE_MODE_VISIBLE,
+	STATE.PLAYING: Input.MOUSE_MODE_VISIBLE,
+	STATE.POST_GAME: Input.MOUSE_MODE_VISIBLE,
+	STATE.PLAYING_PAUSED: Input.MOUSE_MODE_VISIBLE
 }
+
+
+var game_state: STATE = STATE.MENU
+
 
 func _ready():
 	get_tree().paused = should_pause[game_state]
@@ -55,23 +57,23 @@ func _transition(old, new):
 
 
 func pause():
-	_transition(STATE_PLAYING, STATE_PLAYING_PAUSED)
+	_transition(STATE.PLAYING, STATE.PLAYING_PAUSED)
 
 func resume():
-	_transition(STATE_PLAYING_PAUSED, STATE_PLAYING)
+	_transition(STATE.PLAYING_PAUSED, STATE.PLAYING)
 
 func toggle_pause():
 	match game_state:
-		STATE_PLAYING:
+		STATE.PLAYING:
 			pause()
-		STATE_PLAYING_PAUSED:
+		STATE.PLAYING_PAUSED:
 			resume()
 
 func start():
-	_transition(STATE_MENU, STATE_PLAYING)
+	_transition(STATE.MENU, STATE.PLAYING)
 
 func die():
-	_transition(STATE_PLAYING, STATE_POST_GAME)
+	_transition(STATE.PLAYING, STATE.POST_GAME)
 
 func restart():
-	_transition(STATE_POST_GAME, STATE_MENU)
+	_transition(STATE.POST_GAME, STATE.MENU)
