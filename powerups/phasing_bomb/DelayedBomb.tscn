@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://h4letqr5u0ie"]
+
+[ext_resource type="Script" uid="uid://cblgne5pl3m0f" path="res://powerups/phasing_bomb/delayed_bomb.gd" id="1_nro7m"]
+[ext_resource type="Shape2D" uid="uid://bt61hn4r5e4lx" path="res://powerups/phasing_bomb/explosion_shape.tres" id="2_ruys5"]
+[ext_resource type="Texture2D" uid="uid://1ro50o6ydcps" path="res://powerups/phasing_bomb/phasing_bomb_trail_piece.png" id="3_46ydq"]
+
+[node name="DelayedBomb" type="Area2D" groups=["game_objects"]]
+script = ExtResource("1_nro7m")
+metadata/_custom_type_script = "uid://bjxcjxq7n8g6u"
+
+[node name="Fuse" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_ruys5")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_46ydq")
+
+[connection signal="timeout" from="Fuse" to="." method="_on_fuse_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

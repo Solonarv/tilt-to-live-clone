@@ -12,6 +12,9 @@ when touched, turns into a stationary fireball for 1 second. any enemies that to
 
 when touched, gives the player a shield. when the shield touches an enemy, the shield explodes, leaving a stationary fireball for 1 second.
 
+### Phasing Bomb
+gain phasing (don't collide with enemies) for X seconds, leaving a trail. when phasing ends, explosion races along the trail.
+
 ### Wave Motion Gun
 #TODO implement wave motion gun
 

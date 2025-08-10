@@ -4,7 +4,7 @@
 [ext_resource type="Shape2D" path="res://enemy_collision_shape.tres" id="2"]
 [ext_resource type="Script" uid="uid://cxmd1xkk78xt5" path="res://Enemy.gd" id="3"]
 
-[node name="Enemy" type="Area2D" groups=["enemies"]]
+[node name="Enemy" type="Area2D" groups=["enemies", "game_objects"]]
 z_index = 1
 scale = Vector2(0.5, 0.5)
 collision_mask = 6

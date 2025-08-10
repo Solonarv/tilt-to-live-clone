@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Formation.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://cbbom1x5l6idk" path="res://Enemy.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dacjnw5ssa1j8" path="res://formation.gd" id="2"]
 
 [node name="Formation" type="Node2D" groups=["formations"]]
 script = ExtResource( 2 )

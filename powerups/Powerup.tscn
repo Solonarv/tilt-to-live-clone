@@ -1,22 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://cepwk1ouasbsj"]
+[gd_scene load_steps=10 format=3 uid="uid://cepwk1ouasbsj"]
 
-[ext_resource type="Script" uid="uid://bkmkcfqhiarf5" path="res://powerups/Powerup.gd" id="1_bgipy"]
+[ext_resource type="Script" uid="uid://bkmkcfqhiarf5" path="res://powerups/powerup.gd" id="1_bgipy"]
 [ext_resource type="Shape2D" uid="uid://dax0b2dxgufhb" path="res://powerups/powerup_shape.tres" id="2_q0w1j"]
 [ext_resource type="PackedScene" uid="uid://bl7ahax6nn87l" path="res://powerups/explosion/Explosion.tscn" id="2_vvkec"]
 [ext_resource type="PackedScene" uid="uid://bn1wkrx5ctbdq" path="res://powerups/explosive_shield/ExplosiveShield.tscn" id="3_mo3v3"]
-[ext_resource type="Texture2D" uid="uid://cdbs28rjv4xxp" path="res://powerup_sprite.png" id="3_vvkec"]
+[ext_resource type="Texture2D" uid="uid://cdbs28rjv4xxp" path="res://powerups/powerup_sprite.png" id="3_vvkec"]
+[ext_resource type="PackedScene" uid="uid://bkt05vgesdx1q" path="res://powerups/phasing_bomb/PhasingBomb.tscn" id="4_boa5o"]
+[ext_resource type="Texture2D" uid="uid://gf4sn4th7y7t" path="res://powerups/explosion/powerup_sprite_explosion.png" id="4_fsttv"]
+[ext_resource type="Texture2D" uid="uid://5oacq6f0imhj" path="res://powerups/explosive_shield/powerup_sprite_explosive_shield.png" id="5_ld87h"]
+[ext_resource type="Texture2D" uid="uid://b6oa067fl756k" path="res://powerups/phasing_bomb/powerup_phasing_bomb_sprite.png" id="7_a6vsb"]
 
-[node name="Powerup" type="Area2D" groups=["powerups"]]
+[node name="Powerup" type="Area2D" groups=["game_objects", "powerups"]]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_bgipy")
-powerups = Array[PackedScene]([ExtResource("3_mo3v3"), ExtResource("2_vvkec")])
+powerups = Array[PackedScene]([ExtResource("3_mo3v3"), ExtResource("2_vvkec"), ExtResource("4_boa5o")])
+sprites = Array[Texture2D]([ExtResource("5_ld87h"), ExtResource("4_fsttv"), ExtResource("7_a6vsb")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_q0w1j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_vvkec")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -39,8 +39,7 @@ func game_over():
 func new_game():
 	score = 0
 	player.start($PlayerStartPosition.position)
-	get_tree().call_group("enemies", "queue_free")
-	get_tree().call_group("powerups", "queue_free")
+	get_tree().call_group(&"game_objects", "queue_free")
 	start_timers()
 	_show_score()
 	
@@ -81,7 +80,7 @@ func _on_mob_spawner_timeout() -> void:
 
 func _on_player_scored() -> void:
 	multiplier_grace_period.start()
-	score += _get_effective_multiplier()
+	score += floori(_get_effective_multiplier())
 	recent_kill_count += 1
 	_show_score()
 

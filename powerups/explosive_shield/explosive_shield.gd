@@ -18,7 +18,7 @@ func do_kill(area: Area2D) -> void:
 		scale *= 8
 		expanded = true
 		$Timer.start()
-		call_deferred("reparent", player.get_parent())
+		reparent.call_deferred(player.get_parent())
 
 
 func _on_timer_timeout() -> void:

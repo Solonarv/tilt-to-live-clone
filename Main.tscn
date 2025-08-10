@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://npboqpas0ykd"]
 
 [ext_resource type="PackedScene" uid="uid://cjp8ngniv4xin" path="res://Player.tscn" id="1"]
-[ext_resource type="Script" uid="uid://cg4upkhmi1b30" path="res://Main.gd" id="2"]
+[ext_resource type="Script" uid="uid://cg4upkhmi1b30" path="res://main.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cbbom1x5l6idk" path="res://Enemy.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://cepwk1ouasbsj" path="res://powerups/Powerup.tscn" id="3_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://c8mvrhgkbu2pa" path="res://HUD.tscn" id="4"]

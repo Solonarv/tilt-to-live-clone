@@ -37,7 +37,7 @@ func _ready() -> void:
 		mode = INPUT_MODE.TOUCH_DRAG
 
 
-func _physics_process(dt: float) -> void:
+func _physics_process(_dt: float) -> void:
 	if base_gravity != Vector3.ZERO:
 		last_gravity = Input.get_gravity()
 

@@ -2,12 +2,15 @@
 
 [ext_resource type="FontFile" uid="uid://3mcprkkyqpft" path="res://AAbsoluteEmpire-EaXpg.ttf" id="1"]
 [ext_resource type="Script" uid="uid://b1nt6wnos636d" path="res://HUD.gd" id="2"]
-[ext_resource type="Script" uid="uid://ctldwdx22t8lh" path="res://InputHandler.gd" id="2_ne771"]
-[ext_resource type="Script" uid="uid://dqjmbxf4r4vfx" path="res://HUDLayer.gd" id="3"]
+[ext_resource type="Script" uid="uid://ctldwdx22t8lh" path="res://input_handler.gd" id="2_ne771"]
+[ext_resource type="Script" uid="uid://dqjmbxf4r4vfx" path="res://hud_layer.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://nnuaww0ocruw" path="res://touch_indicator_sprite.png" id="3_xxqia"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -16,6 +19,9 @@ cache/0/16/0/scale = 1.0
 
 [sub_resource type="FontFile" id="2"]
 fallbacks = Array[Font]([ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0

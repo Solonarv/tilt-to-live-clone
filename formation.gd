@@ -22,7 +22,7 @@ var shape: SHAPES
 
 func _ready() -> void:
 	randomize()
-	shape = randi_range(0, SHAPES.size())
+	shape = randi_range(0, SHAPES.size()) as SHAPES
 
 
 func _physics_process(delta: float) -> void:

@@ -9,6 +9,7 @@ signal scored
 
 var input_handler: InputHandler
 var dead := false
+var immune_to_enemies := {}
 
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var indicator_line: Line2D = $IndicatorLine
@@ -43,12 +44,23 @@ func start(pos: Vector2) -> void:
 	dead = false
 	collider.disabled = false
 
+func become_immune(cause: Node) -> void:
+	print_debug("player became immune because of", cause)
+	immune_to_enemies[cause] = 1 + immune_to_enemies.get_or_add(cause, 0)
+	cause.connect(&"no_longer_immune", self._on_no_longer_immune)
 
 func _on_player_area_entered(area: Area2D) -> void:
-	print_debug("player entered area: " + area.name)
-	if area.is_in_group(&"enemies"):
+	if immune_to_enemies.size() == 0 and area.is_in_group(&"enemies"):
 		die()
 
 
-func get_score(area: Area2D) -> void:
+func get_score(_area: Area2D) -> void:
 	emit_signal(&"scored")
+
+func _on_no_longer_immune(cause) -> void:
+	immune_to_enemies[cause] -= 1
+	if immune_to_enemies[cause] <= 0:
+		immune_to_enemies.erase(cause)
+		print_debug("player lost immunity granted by: ", cause)
+	if immune_to_enemies.size() == 0:
+		print_debug("player is no longer immune!")
