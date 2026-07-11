@@ -28,12 +28,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position += velocity * delta
 	rotation += angular_velocity * delta
-	if shrink_speed != null and radius > 20*shrink_speed:
+	if shrink_speed != null and radius > 32:
 		for child in children:
 			if is_instance_valid(child):
 				var move = child.position.limit_length(shrink_speed*delta)
 				child.position -= move
-		radius += shrink_speed
+		radius -= shrink_speed*delta
 	if !get_viewport_rect().grow(radius).has_point(position):
 		queue_free()
 
@@ -53,7 +53,8 @@ func begin(player: Player) -> void:
 			velocity = direction * randf_range(0.7, 1.4) * 20
 			angular_velocity = randf_range(-PI, PI) * 0.1
 			position = target.position
-			shrink_speed = 10
+			shrink_speed = 4**randf_range(0, 1) * 10
+			print("shrink_speed=", shrink_speed)
 
 
 func populate() -> void:
