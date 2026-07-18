@@ -7,7 +7,7 @@ class_name Main
 @export var formation_scene: PackedScene
 @export var enemy_safe_zone := 100.0
 @export var base_powerup_chance := 0.02
-@export var powerup_chance_decay := 4.0
+@export var powerup_littering_penalty := 4.0
 @export var cross_chance := 0.05
 @export var score_multiplier_scale := 0.2
 
@@ -67,7 +67,7 @@ func _on_mob_spawner_timeout() -> void:
 	
 	if randf() < powerup_chance:
 		var total_powerups: float = get_tree().get_node_count_in_group(&"powerups")
-		if randf() < pow(0.5, total_powerups/4):
+		if randf() < pow(0.5, total_powerups/powerup_littering_penalty):
 			var powerup: Powerup = powerup_scene.instantiate()
 			powerup.position = gen_spawn_location()
 			add_child(powerup)

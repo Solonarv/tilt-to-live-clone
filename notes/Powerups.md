@@ -1,6 +1,8 @@
 ## General
-#TODO Tweak spawn rate. Pseudo-random works well, rate is just too high. Maybe rate should be dependent on how many are already around.
-Thought: maybe the rate is fine, actually.
+### Spawning
+Powerups have a 2% chance to spawn every 0.2s, accumulating (i.e. failing this chance increases the chance by 2%).
+
+Unused powerups provide a chance for spawning to fail, equal to `0.5^(powerups/4)`.
 
 #TODO more types
 
