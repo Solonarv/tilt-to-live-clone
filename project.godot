@@ -32,6 +32,7 @@ project/assembly_name="Tilt to Live clone"
 [global_group]
 
 game_objects=""
+powerups=""
 
 [input_devices]
 

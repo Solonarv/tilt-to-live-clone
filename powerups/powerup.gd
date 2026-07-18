@@ -12,6 +12,7 @@ var kind: int
 func _ready() -> void:
 	kind = randi_range(0, powerups.size() - 1)
 	sprite.texture = sprites[kind]
+	add_to_group(&"powerups")
 
 
 func get_powerup() -> PackedScene:
