@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -e
+
+source settings.sh
+
+pushcmd="butler push --userversion=$VER"
+target="$1"
+shift
+
+cd out/
+
+case "$target" in
+  linux)
+    $pushcmd linux-x86_64/ $game:linux
+    ;;
+  windows)
+    $pushcmd windows/ $game:windows
+    ;;
+  android)
+    $pushcmd android/ $game:android
+    ;;
+  html5)
+    $pushcmd html5/ $game:html5
+    ;;
+  all)
+    ./push linux
+    ./push windows
+    ./push android
+    ./push html5
+esac
