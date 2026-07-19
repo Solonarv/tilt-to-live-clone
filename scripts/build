@@ -1,0 +1,26 @@
+#!/bin/env python3
+
+import sys
+import subprocess
+
+commands=set()
+base_command=["godot", "project.godot", "--headless"]
+
+all_targets={"linux": "out/linux-x86_64/tilt-to-live-clone",
+        "windows": "out/windows/tilt-to-live-clone.exe",
+        "android": "out/android/tilt-to-live-clone.apk",
+        "html5": "out/html5/index.html"}
+
+targets=sys.argv[1:]
+if "all" in targets:
+    targets=all_targets.keys()
+
+for target in targets:
+    name=target.lower()
+    if name not in all_targets:
+        print(f"Unknown target {target}, skipping!")
+    exe=all_targets[name]
+    commands.add(tuple(base_command + ["--export-release", name, exe]))
+
+for command in commands:
+    subprocess.run(command)
