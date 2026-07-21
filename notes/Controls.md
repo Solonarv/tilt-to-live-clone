@@ -1,6 +1,10 @@
 ## General
 Player inputs a direction and speed to move in and nothing else.
 
+## Pausing
+
+#TODO add a pause button that works in touch mode too.
+
 ## Modes
 ### Mouse Control
 Player ship tries to be at mouse position, constrained by maximum speed. Short distance = slower movement.
