@@ -58,6 +58,17 @@ func gen_spawn_location(extra_safe_zone: float = 0) -> Vector2:
 			break
 	return spawn_location
 
+func get_edge_center(direction: Vector2) -> Vector2:
+	var x:=0.0
+	var y:=0.0
+	if abs(direction.x) > abs(direction.y):
+		x = viewport.size.x if direction.x>0 else 0
+		y = viewport.size.y/2
+	else:
+		x = viewport.size.x/2
+		y = viewport.size.y if direction.y>0 else 0
+	return Vector2(x,y)
+
 
 func _on_mob_spawner_timeout() -> void:
 	var enemy: Enemy = enemy_scene.instantiate()

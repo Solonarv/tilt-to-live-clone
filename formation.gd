@@ -4,12 +4,15 @@ extends Node2D
 
 enum SHAPES {
 	CROSS,
-	COLLAPSING_CIRCLE
+	COLLAPSING_CIRCLE,
+	SWEEPER_H,
+	SWEEPER_V
 }
 
 
 @export var enemy_scene: PackedScene
 
+@export var mirror_chance := 0.1
 
 var target: Player
 var velocity := Vector2.ZERO
@@ -18,11 +21,13 @@ var children : Array[Enemy] = []
 var radius := 0.0
 var shrink_speed := 0.0
 var shape: SHAPES
+var is_mirror := false
 
 
 func _ready() -> void:
-	randomize()
-	shape = randi_range(0, SHAPES.size()) as SHAPES
+	if !is_mirror:
+		randomize()
+		shape = SHAPES.SWEEPER_H
 
 
 func _physics_process(delta: float) -> void:
@@ -41,6 +46,14 @@ func _physics_process(delta: float) -> void:
 func begin(player: Player) -> void:
 	target = player
 	# print_debug(shape)
+	if (not self.is_mirror
+		and (shape==SHAPES.SWEEPER_H or shape == SHAPES.SWEEPER_V)
+		and randf_range(0,1)<mirror_chance):
+		var copy: Formation = self.duplicate()
+		copy.is_mirror = true
+		copy.shape = shape
+		get_parent().add_child(copy)
+		copy.begin(target)
 	populate()
 	match shape:
 		SHAPES.CROSS:
@@ -54,7 +67,24 @@ func begin(player: Player) -> void:
 			angular_velocity = randf_range(-PI, PI) * 0.1
 			position = target.position
 			shrink_speed = 4**randf_range(0, 1) * 10
-			print("shrink_speed=", shrink_speed)
+		SHAPES.SWEEPER_H:
+			var direction: Vector2
+			if target.position.x < get_parent().viewport.size.x/2:
+				direction = Vector2(1,0)
+			else:
+				direction = Vector2(-1,0)
+			if is_mirror: direction = -direction
+			position = get_parent().get_edge_center(direction) - direction*8
+			velocity = -direction * 2**randf_range(0,1) * 80
+		SHAPES.SWEEPER_V:
+			var direction: Vector2
+			if target.position.y < get_parent().viewport.size.y/2:
+				direction = Vector2(0,1)
+			else:
+				direction = Vector2(0,-1)
+			if is_mirror: direction = -direction
+			position = get_parent().get_edge_center(direction) - direction*8
+			velocity = -direction * 2**randf_range(0,1) * 80
 
 
 func populate() -> void:
@@ -70,6 +100,10 @@ func populate() -> void:
 				var direction = Vector2(1,0).rotated(2*PI*i/50)
 				add_child_at(direction * 320)
 				add_child_at(direction * 328)
+		SHAPES.SWEEPER_H:
+			make_rect(2, 90, Vector2(-1, -45))
+		SHAPES.SWEEPER_V:
+			make_rect(160, 2, Vector2(-80, -1))
 			
 
 func make_rect(width: int, height: int, offset: Vector2) -> void:

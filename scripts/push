@@ -2,30 +2,28 @@
 
 set -e
 
-source settings.sh
+source scripts/settings.sh
 
 pushcmd="butler push --userversion=$VER"
 target="$1"
 shift
 
-cd out/
-
 case "$target" in
   linux)
-    $pushcmd linux-x86_64/ $game:linux
+    $pushcmd out/linux-x86_64/ $game:linux
     ;;
   windows)
-    $pushcmd windows/ $game:windows
+    $pushcmd out/windows/ $game:windows
     ;;
   android)
-    $pushcmd android/ $game:android
+    $pushcmd out/android/ $game:android
     ;;
   html5)
-    $pushcmd html5/ $game:html5
+    $pushcmd out/html5/ $game:html5
     ;;
   all)
-    ./push linux
-    ./push windows
-    ./push android
-    ./push html5
+    scripts/push linux
+    scripts/push windows
+    scripts/push android
+    scripts/push html5
 esac
