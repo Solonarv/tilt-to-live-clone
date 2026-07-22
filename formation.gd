@@ -27,7 +27,7 @@ var is_mirror := false
 func _ready() -> void:
 	if !is_mirror:
 		randomize()
-		shape = SHAPES.SWEEPER_H
+		shape = randi_range(0, SHAPES.size()-1) as SHAPES
 
 
 func _physics_process(delta: float) -> void:

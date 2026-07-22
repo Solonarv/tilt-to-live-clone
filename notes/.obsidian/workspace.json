@@ -63,8 +63,7 @@
               "title": "Formations"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -222,11 +221,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f7da06d856c0bb3a",
+  "active": "7162df382a203348",
   "lastOpenFiles": [
+    "Formations.md",
     "Powerups.md",
     "Perks.md",
-    "Formations.md",
     "Controls.md",
     "Interface.md",
     "Look, Branding, Name.md",

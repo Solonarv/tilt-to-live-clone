@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://npboqpas0ykd"]
+[gd_scene format=3 uid="uid://npboqpas0ykd"]
 
 [ext_resource type="PackedScene" uid="uid://cjp8ngniv4xin" path="res://Player.tscn" id="1"]
 [ext_resource type="Script" uid="uid://cg4upkhmi1b30" path="res://main.gd" id="2"]
@@ -7,29 +7,29 @@
 [ext_resource type="PackedScene" uid="uid://c8mvrhgkbu2pa" path="res://HUD.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Formation.tscn" id="6"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=534620094]
 script = ExtResource("2")
 enemy_scene = ExtResource("3")
 powerup_scene = ExtResource("3_3dxm6")
 formation_scene = ExtResource("6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2074968453]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.0470588, 0.258824, 0.0745098, 1)
 
-[node name="Player" parent="." instance=ExtResource("1")]
+[node name="Player" parent="." unique_id=726944987 instance=ExtResource("1")]
 
-[node name="MobSpawner" type="Timer" parent="."]
+[node name="MobSpawner" type="Timer" parent="." unique_id=657982199]
 wait_time = 0.2
 
-[node name="PlayerStartPosition" type="Marker2D" parent="."]
+[node name="PlayerStartPosition" type="Marker2D" parent="." unique_id=1507096138]
 position = Vector2(640, 360)
 
-[node name="HUD" parent="." instance=ExtResource("4")]
+[node name="HUD" parent="." unique_id=2134847774 instance=ExtResource("4")]
 
-[node name="MultiplierGracePeriod" type="Timer" parent="."]
+[node name="MultiplierGracePeriod" type="Timer" parent="." unique_id=1147645792]
 wait_time = 2.0
 
 [connection signal="hit" from="Player" to="." method="game_over"]

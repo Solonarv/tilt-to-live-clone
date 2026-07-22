@@ -7,6 +7,9 @@ signal scored
 @export var acceleration: float = 700
 @export var dead_zone_squared: float = 0.01
 
+@export var IMMUNE_COLOR: Color
+@export var NORMAL_COLOR: Color
+
 var input_handler: InputHandler
 var dead := false
 var immune_to_enemies := {}
@@ -14,6 +17,7 @@ var immune_to_enemies := {}
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var indicator_line: Line2D = $IndicatorLine
 @onready var viewport: Viewport = $"/root"
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _physics_process(delta: float) -> void:
 	if dead:
@@ -45,8 +49,9 @@ func start(pos: Vector2) -> void:
 	collider.disabled = false
 
 func become_immune(cause: Node) -> void:
-	print_debug("player became immune because of", cause)
+	print_debug("player became immune because of ", cause)
 	immune_to_enemies[cause] = 1 + immune_to_enemies.get_or_add(cause, 0)
+	modulate = IMMUNE_COLOR
 	cause.connect(&"no_longer_immune", self._on_no_longer_immune)
 
 func _on_player_area_entered(area: Area2D) -> void:
@@ -64,3 +69,4 @@ func _on_no_longer_immune(cause) -> void:
 		print_debug("player lost immunity granted by: ", cause)
 	if immune_to_enemies.size() == 0:
 		print_debug("player is no longer immune!")
+		modulate = NORMAL_COLOR

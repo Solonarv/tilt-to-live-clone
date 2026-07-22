@@ -1,24 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjp8ngniv4xin"]
+[gd_scene format=3 uid="uid://cjp8ngniv4xin"]
 
 [ext_resource type="Script" uid="uid://bbcyjjwjbru2k" path="res://player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://doyaa61bk0egg" path="res://player-sprite.png" id="2"]
 [ext_resource type="Shape2D" path="res://player_collision_shape.tres" id="3"]
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" unique_id=2119733897]
 z_index = 1
 collision_layer = 4
 script = ExtResource("1")
+IMMUNE_COLOR = Color(0.9166399, 0.91663986, 0.9166398, 0.49803922)
+NORMAL_COLOR = Color(1, 1, 1, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=255782233]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=611974172]
 shape = ExtResource("3")
 
-[node name="Player" type="Node2D" parent="."]
+[node name="Player" type="Node2D" parent="." unique_id=179913661]
 
-[node name="IndicatorLine" type="Line2D" parent="."]
+[node name="IndicatorLine" type="Line2D" parent="." unique_id=170344069]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 1.0
 default_color = Color(1, 0.807843, 0.4, 1)
