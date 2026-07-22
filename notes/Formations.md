@@ -40,6 +40,6 @@ walls that sweep across the entire playing field (horizontally or vertically) wi
 
 sweepers determine direction randomly, then start on the edge furthest from the player.
 
-small (10%) chance to spawn a mirrored sweeper on the opposite edge as well.
+#todo re-add mirrored sweepers: small (10%) chance to spawn a mirrored sweeper on the opposite edge as well.
 
 play impact: must reserve some powerups to break through sweepers

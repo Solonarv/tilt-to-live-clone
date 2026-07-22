@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cegep4qbjklgr"]
+
+[ext_resource type="Script" uid="uid://7wsmda7ryvc1" path="res://formations/spinning_cross.gd" id="1_ju2vi"]
+
+[node name="SpinningCross" type="Node2D" unique_id=463468588]
+script = ExtResource("1_ju2vi")
+metadata/_custom_type_script = "uid://dacjnw5ssa1j8"

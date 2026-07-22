@@ -5,13 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://cbbom1x5l6idk" path="res://Enemy.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://cepwk1ouasbsj" path="res://powerups/Powerup.tscn" id="3_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://c8mvrhgkbu2pa" path="res://HUD.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Formation.tscn" id="6"]
+[ext_resource type="Script" uid="uid://bhb8m6w6plyw2" path="res://enemy_spawner.gd" id="6_lgr22"]
+[ext_resource type="PackedScene" uid="uid://orwrgxq7ocbv" path="res://formations/CollapsingCircle.tscn" id="6_wkp8b"]
+[ext_resource type="PackedScene" uid="uid://cegep4qbjklgr" path="res://formations/SpinningCross.tscn" id="7_20pc6"]
+[ext_resource type="PackedScene" uid="uid://bj6b4pd4af1bj" path="res://formations/SweeperH.tscn" id="8_5vvyt"]
+[ext_resource type="PackedScene" uid="uid://c63uln3fo0yy5" path="res://formations/SweeperV.tscn" id="9_c6i3y"]
 
 [node name="Main" type="Node" unique_id=534620094]
 script = ExtResource("2")
-enemy_scene = ExtResource("3")
-powerup_scene = ExtResource("3_3dxm6")
-formation_scene = ExtResource("6")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2074968453]
 anchors_preset = 15
@@ -21,8 +22,13 @@ color = Color(0.0470588, 0.258824, 0.0745098, 1)
 
 [node name="Player" parent="." unique_id=726944987 instance=ExtResource("1")]
 
-[node name="MobSpawner" type="Timer" parent="." unique_id=657982199]
+[node name="EnemySpawner" type="Timer" parent="." unique_id=657982199]
 wait_time = 0.2
+script = ExtResource("6_lgr22")
+enemy_scene = ExtResource("3")
+powerup_scene = ExtResource("3_3dxm6")
+formations = Array[PackedScene]([ExtResource("6_wkp8b"), ExtResource("7_20pc6"), ExtResource("8_5vvyt"), ExtResource("9_c6i3y")])
+formation_weights = Array[float]([2.0, 2.0, 1.0, 1.0])
 
 [node name="PlayerStartPosition" type="Marker2D" parent="." unique_id=1507096138]
 position = Vector2(640, 360)
@@ -34,7 +40,7 @@ wait_time = 2.0
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="scored" from="Player" to="." method="_on_player_scored"]
-[connection signal="timeout" from="MobSpawner" to="." method="_on_mob_spawner_timeout"]
+[connection signal="timeout" from="EnemySpawner" to="EnemySpawner" method="_on_timeout"]
 [connection signal="pause_game" from="HUD" to="." method="_on_HUD_pause_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="MultiplierGracePeriod" to="." method="_on_multiplier_grace_period_timeout"]

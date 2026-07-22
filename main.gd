@@ -2,24 +2,17 @@ extends Node
 
 class_name Main
 
-@export var enemy_scene: PackedScene
-@export var powerup_scene: PackedScene
-@export var formation_scene: PackedScene
-@export var enemy_safe_zone := 100.0
-@export var base_powerup_chance := 0.02
-@export var powerup_littering_penalty := 4.0
-@export var cross_chance := 0.05
+
 @export var score_multiplier_scale := 0.2
 
 var score: int = 0
 var recent_kill_count: int = 0
 
-@onready var powerup_chance := base_powerup_chance
 @onready var viewport: Viewport = $"/root"
 @onready var player: Player = $Player
 @onready var input_handler: InputHandler = $HUD/InputHandler
 @onready var hud: HUD = $HUD
-@onready var mob_spawner: Timer = $MobSpawner
+@onready var mob_spawner: Timer = $EnemySpawner
 @onready var multiplier_grace_period: Timer = $MultiplierGracePeriod
 
 
@@ -27,6 +20,7 @@ func _ready():
 	randomize()
 	StateManager.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
 	player.set_input_handler(input_handler)
+	mob_spawner.extent = viewport.size
 
 
 func _unhandled_input(event):
@@ -49,15 +43,6 @@ func start_timers():
 	mob_spawner.start()
 
 
-func gen_spawn_location(extra_safe_zone: float = 0) -> Vector2:
-	var safe_zone = enemy_safe_zone + extra_safe_zone
-	var spawn_location
-	while true:
-		spawn_location = Vector2(randf_range(0, viewport.size.x), randf_range(0, viewport.size.y))
-		if (spawn_location - $Player.position).length() > safe_zone:
-			break
-	return spawn_location
-
 func get_edge_center(direction: Vector2) -> Vector2:
 	var x:=0.0
 	var y:=0.0
@@ -68,28 +53,6 @@ func get_edge_center(direction: Vector2) -> Vector2:
 		x = viewport.size.x/2
 		y = viewport.size.y if direction.y>0 else 0
 	return Vector2(x,y)
-
-
-func _on_mob_spawner_timeout() -> void:
-	var enemy: Enemy = enemy_scene.instantiate()
-	enemy.position = gen_spawn_location()
-	enemy.start(player)
-	add_child(enemy)
-	
-	if randf() < powerup_chance:
-		var total_powerups: float = get_tree().get_node_count_in_group(&"powerups")
-		if randf() < pow(0.5, total_powerups/powerup_littering_penalty):
-			var powerup: Powerup = powerup_scene.instantiate()
-			powerup.position = gen_spawn_location()
-			add_child(powerup)
-		powerup_chance = base_powerup_chance
-	else:
-		powerup_chance += base_powerup_chance
-		
-	if randf() < cross_chance:
-		var formation: Formation = formation_scene.instantiate()
-		add_child(formation)
-		formation.begin(player)
 
 
 func _on_player_scored() -> void:

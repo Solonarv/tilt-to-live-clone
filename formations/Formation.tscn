@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cj878haxkki5b"]
+
+[ext_resource type="Script" uid="uid://dacjnw5ssa1j8" path="res://formations/formation.gd" id="2"]
+
+[node name="Formation" type="Node2D" unique_id=1538958192 groups=["formations"]]
+script = ExtResource("2")
