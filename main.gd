@@ -43,17 +43,6 @@ func start_timers():
 	mob_spawner.start()
 
 
-func get_edge_center(direction: Vector2) -> Vector2:
-	var x:=0.0
-	var y:=0.0
-	if abs(direction.x) > abs(direction.y):
-		x = viewport.size.x if direction.x>0 else 0
-		y = viewport.size.y/2
-	else:
-		x = viewport.size.x/2
-		y = viewport.size.y if direction.y>0 else 0
-	return Vector2(x,y)
-
 
 func _on_player_scored() -> void:
 	multiplier_grace_period.start()

@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cepwk1ouasbsj" path="res://powerups/Powerup.tscn" id="3_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://c8mvrhgkbu2pa" path="res://HUD.tscn" id="4"]
 [ext_resource type="Script" uid="uid://bhb8m6w6plyw2" path="res://enemy_spawner.gd" id="6_lgr22"]
-[ext_resource type="PackedScene" uid="uid://orwrgxq7ocbv" path="res://formations/CollapsingCircle.tscn" id="6_wkp8b"]
-[ext_resource type="PackedScene" uid="uid://cegep4qbjklgr" path="res://formations/SpinningCross.tscn" id="7_20pc6"]
-[ext_resource type="PackedScene" uid="uid://bj6b4pd4af1bj" path="res://formations/SweeperH.tscn" id="8_5vvyt"]
-[ext_resource type="PackedScene" uid="uid://c63uln3fo0yy5" path="res://formations/SweeperV.tscn" id="9_c6i3y"]
+[ext_resource type="PackedScene" uid="uid://orwrgxq7ocbv" path="res://formations/collapsing_circle/CollapsingCircle.tscn" id="6_wkp8b"]
+[ext_resource type="PackedScene" uid="uid://cegep4qbjklgr" path="res://formations/spinning_cross/SpinningCross.tscn" id="7_20pc6"]
+[ext_resource type="PackedScene" uid="uid://bj6b4pd4af1bj" path="res://formations/sweeper/SweeperH.tscn" id="8_5vvyt"]
+[ext_resource type="PackedScene" uid="uid://c63uln3fo0yy5" path="res://formations/sweeper/SweeperV.tscn" id="9_c6i3y"]
+[ext_resource type="PackedScene" uid="uid://cd1u4kovnw58b" path="res://formations/unstable_nucleus/UnstableNucleus.tscn" id="10_20pc6"]
 
 [node name="Main" type="Node" unique_id=534620094]
 script = ExtResource("2")
@@ -27,8 +28,8 @@ wait_time = 0.2
 script = ExtResource("6_lgr22")
 enemy_scene = ExtResource("3")
 powerup_scene = ExtResource("3_3dxm6")
-formations = Array[PackedScene]([ExtResource("6_wkp8b"), ExtResource("7_20pc6"), ExtResource("8_5vvyt"), ExtResource("9_c6i3y")])
-formation_weights = Array[float]([2.0, 2.0, 1.0, 1.0])
+formations = Array[PackedScene]([ExtResource("6_wkp8b"), ExtResource("7_20pc6"), ExtResource("8_5vvyt"), ExtResource("9_c6i3y"), ExtResource("10_20pc6")])
+formation_weights = Array[float]([2.0, 2.0, 1.0, 1.0, 10000.0])
 
 [node name="PlayerStartPosition" type="Marker2D" parent="." unique_id=1507096138]
 position = Vector2(640, 360)

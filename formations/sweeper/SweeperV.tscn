@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c63uln3fo0yy5"]
 
-[ext_resource type="Script" uid="uid://g06r6136m60u" path="res://formations/sweeper_v.gd" id="1_i6yg5"]
+[ext_resource type="Script" uid="uid://g06r6136m60u" path="res://formations/sweeper/sweeper_v.gd" id="1_i6yg5"]
 
 [node name="SweeperV" type="Node2D" unique_id=847412277]
 script = ExtResource("1_i6yg5")

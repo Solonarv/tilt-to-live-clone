@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://orwrgxq7ocbv"]
 
-[ext_resource type="Script" uid="uid://cqcpowrohmv7n" path="res://formations/collapsing_circle.gd" id="1_f083t"]
+[ext_resource type="Script" uid="uid://cqcpowrohmv7n" path="res://formations/collapsing_circle/collapsing_circle.gd" id="1_f083t"]
 
 [node name="CollapsingCircle" type="Node2D" unique_id=576758109]
 script = ExtResource("1_f083t")

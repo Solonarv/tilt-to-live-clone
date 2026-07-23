@@ -49,7 +49,6 @@ func start(pos: Vector2) -> void:
 	collider.disabled = false
 
 func become_immune(cause: Node) -> void:
-	print_debug("player became immune because of ", cause)
 	immune_to_enemies[cause] = 1 + immune_to_enemies.get_or_add(cause, 0)
 	modulate = IMMUNE_COLOR
 	cause.connect(&"no_longer_immune", self._on_no_longer_immune)
@@ -66,7 +65,5 @@ func _on_no_longer_immune(cause) -> void:
 	immune_to_enemies[cause] -= 1
 	if immune_to_enemies[cause] <= 0:
 		immune_to_enemies.erase(cause)
-		print_debug("player lost immunity granted by: ", cause)
 	if immune_to_enemies.size() == 0:
-		print_debug("player is no longer immune!")
 		modulate = NORMAL_COLOR

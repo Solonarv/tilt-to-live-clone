@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbbom1x5l6idk"]
+[gd_scene format=3 uid="uid://cbbom1x5l6idk"]
 
 [ext_resource type="Texture2D" uid="uid://eb2p0hce06sl" path="res://enemy_sprite.png" id="1"]
 [ext_resource type="Shape2D" path="res://enemy_collision_shape.tres" id="2"]
 [ext_resource type="Script" uid="uid://cxmd1xkk78xt5" path="res://Enemy.gd" id="3"]
 
-[node name="Enemy" type="Area2D" groups=["enemies", "game_objects"]]
+[node name="Enemy" type="Area2D" unique_id=158934420 groups=["enemies", "game_objects"]]
 z_index = 1
 scale = Vector2(0.5, 0.5)
-collision_mask = 6
+collision_mask = 4
 script = ExtResource("3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=896224250]
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1664574936]
 shape = ExtResource("2")

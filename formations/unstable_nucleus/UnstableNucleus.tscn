@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cd1u4kovnw58b"]
+
+[ext_resource type="Script" uid="uid://cvo7viwpqqpb3" path="res://formations/unstable_nucleus/unstable_nucleus.gd" id="1_lyqte"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3oorx"]
+radius = 1.0
+
+[node name="UnstableNucleus" type="Node2D" unique_id=255706390]
+script = ExtResource("1_lyqte")
+metadata/_custom_type_script = "uid://dacjnw5ssa1j8"
+
+[node name="Collider" type="Area2D" parent="." unique_id=1648898396]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" unique_id=1511218504]
+shape = SubResource("CircleShape2D_3oorx")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="area_entered" from="Collider" to="." method="_on_collider_area_entered"]
